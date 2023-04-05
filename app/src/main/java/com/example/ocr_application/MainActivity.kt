@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ocr_application.databinding.ActivityMainBinding
@@ -26,13 +25,12 @@ import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
-    private val language = "eng"
+    private val language = "kor"
     private lateinit var tessBaseAPI: TessBaseAPI
 
     lateinit var button: Button
     lateinit var imageView: ImageView
     lateinit var surfaceView: CameraSurfaceView
-    lateinit var textView: TextView
 
     private lateinit var binding: ActivityMainBinding
 
@@ -72,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     private fun logic() {
         imageView = binding.imageView
         surfaceView = binding.surfaceView
-        textView = binding.textView
 
         button = binding.button.also {
             it.setOnClickListener { capture() }
@@ -200,9 +197,7 @@ class MainActivity : AppCompatActivity() {
 
             var bitmapResult = Bitmap.createBitmap(dst.cols(), dst.rows(), Bitmap.Config.ARGB_8888)
             Utils.matToBitmap(dst, bitmapResult)
-
             bitmapResult = getRotatedBitmap(bitmapResult, 90)
-            imageView.setImageBitmap(bitmapResult)
 
             originBitmap = getRotatedBitmap(originBitmap, 90)
             imageView.setImageBitmap(originBitmap)
@@ -215,7 +210,6 @@ class MainActivity : AppCompatActivity() {
 
             Log.i("Help!!!!","utF8Text :\n$result")
 
-            textView.text = result
             button.isEnabled = true
             button.text = "텍스트 인식"
 
@@ -297,7 +291,6 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
-
 
     external fun stringFromJNI(): String
 

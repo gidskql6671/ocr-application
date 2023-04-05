@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -34,6 +36,7 @@
         android:configChanges="keyboardHidden|orientation"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ocr_application"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity android:name=".MainActivity"
             android:exported="true">
