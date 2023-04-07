@@ -7,38 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3">
-
-        <com.example.ocr_application.CameraSurfaceView
-            android:id="@+id/surfaceView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="142dp"
-            android:layout_height="170dp"
-            android:layout_gravity="bottom|right"
-            app:srcCompat="@android:drawable/screen_background_dark_transparent" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.7">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="텍스트 인식" />
-    </FrameLayout>
+    <Button
+        android:id="@+id/btn_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사진 찍기"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp" />
 
 </LinearLayout>
