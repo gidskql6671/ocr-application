@@ -9,7 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ocr_application.databinding.ActivityResultBinding
+import com.example.ocr_application.dto.OcrResponse
 import com.example.ocr_application.retrofit.RetrofitClient
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.opencv.android.Utils
 import org.opencv.core.*
 import org.opencv.imgproc.Imgproc
@@ -49,21 +53,22 @@ class ResultActivity : AppCompatActivity() {
 
         imageView.setImageBitmap(preProcessedBitmap)
 
-        RetrofitClient.getApiService().fake("test")
-            .enqueue(object: Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+        RetrofitClient.getApiService().ocr(getMultipartData(file))
+            .enqueue(object: Callback<OcrResponse> {
+                override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {
                     if (response.isSuccessful.not()) {
                         return
                     }
 
                     response.body()?.let {
-                        Log.d("dong_request", it)
+//                        Log.d("dong_request", it.resultString)
+                        Log.d("dong_request", it.toString())
 
-                        textView.text = it
+                        textView.text = it.resultString
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
                     Log.d("dong_request", t.toString())
                 }
             })
@@ -216,4 +221,9 @@ class ResultActivity : AppCompatActivity() {
         return bitmapResult
     }
 
+    private fun getMultipartData(image: File): MultipartBody.Part {
+        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), image)
+
+        return MultipartBody.Part.createFormData("image", image.name, requestFile)
+    }
 }
