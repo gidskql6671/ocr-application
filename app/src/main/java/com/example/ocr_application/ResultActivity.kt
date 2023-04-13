@@ -49,9 +49,9 @@ class ResultActivity : AppCompatActivity() {
         val options = BitmapFactory.Options()
         options.inPreferredConfig = Bitmap.Config.ARGB_8888
         val imageBitmap = BitmapFactory.decodeStream(FileInputStream(file), null, options)!!
-        val preProcessedBitmap = preProcess(imageBitmap)
+//        val preProcessedBitmap = preProcess(imageBitmap)
 
-        imageView.setImageBitmap(preProcessedBitmap)
+        imageView.setImageBitmap(getRotatedBitmap(imageBitmap, 90))
 
         RetrofitClient.getApiService().ocr(getMultipartData(file))
             .enqueue(object: Callback<OcrResponse> {
@@ -216,6 +216,7 @@ class ResultActivity : AppCompatActivity() {
 
         var bitmapResult = Bitmap.createBitmap(dst.cols(), dst.rows(), Bitmap.Config.ARGB_8888)
         Utils.matToBitmap(dst, bitmapResult)
+
         bitmapResult = getRotatedBitmap(bitmapResult, 90)
 
         return bitmapResult
