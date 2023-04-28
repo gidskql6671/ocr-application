@@ -12,6 +12,7 @@ import androidx.core.content.FileProvider
 import com.example.ocr_application.databinding.ActivityMainBinding
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -38,7 +39,10 @@ class MainActivity : AppCompatActivity() {
             .setPermissionListener(object: PermissionListener {
                 override fun onPermissionGranted() {
                     button = binding.btnPicture.also {
-                        it.setOnClickListener { capture() }
+                        it.setOnClickListener {
+//                            capture()
+                            mockCapture()
+                        }
                     }
                 }
                 override fun onPermissionDenied(deniedPermissions: MutableList<String>) {
@@ -52,6 +56,30 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun mockCapture() {
+        try {
+            val inputStream = assets.open("sample.jpeg")
+            val photoFile: File = File.createTempFile("sample", ".jpg", cacheDir)
+
+            val buffer = ByteArray(8192)
+            var bytesRead: Int
+            val output = ByteArrayOutputStream()
+            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                output.write(buffer, 0, bytesRead)
+            }
+
+            photoFile.writeBytes(output.toByteArray())
+
+            val intent = Intent(this, ResultActivity::class.java)
+
+            intent.putExtra("imagePath", photoFile.absolutePath)
+
+            startActivity(intent)
+        } catch (_: IOException) {
+        }
+
+    }
+
     private fun capture() {
         val imageTakeIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (imageTakeIntent.resolveActivity(packageManager) != null) {
@@ -61,9 +89,8 @@ class MainActivity : AppCompatActivity() {
             val imageFileName = "Capture_${timestamp}_"
 
             try {
-                val tempImage = File.createTempFile(imageFileName, ".jpg", cacheDir)
-                currentPhotoPath = tempImage.absolutePath
-                photoFile = tempImage
+                photoFile = File.createTempFile(imageFileName, ".jpg", cacheDir)
+                currentPhotoPath = photoFile.absolutePath
             } catch (_: IOException) {
             }
 

@@ -51,8 +51,8 @@ class ResultActivity : AppCompatActivity() {
 
         imageView.setImageBitmap(getRotatedBitmap(imageBitmap, 90))
 
-        callOcr(file)
-//        callOcrMock()
+//        callOcr(file)
+        callOcrMock()
     }
 
     private fun callOcrMock() {
