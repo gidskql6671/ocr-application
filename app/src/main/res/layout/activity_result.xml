@@ -25,27 +25,87 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="0.94">
+        <TextView
+            android:id="@+id/correctPercentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="여기에 맞춤법 정답률이 표시됩니다."
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.7"
         android:layout_marginTop="10dp">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/scrollViewLayout"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_weight="0.5">
 
-                <TextView
-                    android:id="@+id/textView"
+                <LinearLayout
+                    android:id="@+id/scrollViewLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="여기에 텍스트 인식 결과가 표시됩니다."
-                    android:textSize="18sp" />
-            </LinearLayout>
-        </ScrollView>
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/originTextLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="텍스트 인식 결과"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/originTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="여기에 텍스트 인식 결과가 표시됩니다."
+                        android:textSize="16sp"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+            </ScrollView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.95"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5">
+
+                <LinearLayout
+                    android:id="@+id/scrollViewLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/correctTextLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="맞춤법 결과"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/correctTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="여기에 텍스트 인식 결과의 정답이 표시됩니다."
+                        android:textSize="16sp"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
 
     </FrameLayout>
 </LinearLayout>
