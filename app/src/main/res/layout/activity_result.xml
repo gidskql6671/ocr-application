@@ -1,111 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ResultActivity">
+    tools:context=".activity.ResultActivity">
 
-    <FrameLayout
+    <TextView
+        android:id="@+id/titleBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3">
+        android:layout_height="wrap_content"
+        android:background="#ff7a00"
+        android:gravity="center"
+        android:paddingVertical="20dp"
+        android:text="맞춤법 검사 결과"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="55dp"
-            app:srcCompat="@android:drawable/screen_background_dark_transparent" />
-
-    </FrameLayout>
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.94">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_picture">
+
         <TextView
             android:id="@+id/correctPercentTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="여기에 맞춤법 정답률이 표시됩니다."
+            android:textColor="@color/black"
             android:textSize="18sp" />
-    </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.7"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp" >
 
-            <ScrollView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/scrollViewLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/originTextLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="텍스트 인식 결과"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/originTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="여기에 텍스트 인식 결과가 표시됩니다."
-                        android:textSize="16sp"
-                        android:layout_marginTop="6dp" />
-                </LinearLayout>
-            </ScrollView>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.95"/>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5">
-
-                <LinearLayout
-                    android:id="@+id/scrollViewLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/correctTextLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="맞춤법 결과"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/correctTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="여기에 텍스트 인식 결과의 정답이 표시됩니다."
-                        android:textSize="16sp"
-                        android:layout_marginTop="6dp"/>
-                </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
-
-
-    </FrameLayout>
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="15dp"
+        android:text="사진 확인"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

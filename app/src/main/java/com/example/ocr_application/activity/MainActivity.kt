@@ -1,4 +1,4 @@
-package com.example.ocr_application
+package com.example.ocr_application.activity
 
 import android.Manifest
 import android.content.Intent
