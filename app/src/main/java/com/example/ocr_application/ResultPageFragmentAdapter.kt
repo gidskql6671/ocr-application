@@ -14,9 +14,9 @@ class ResultPageFragmentAdapter(
 
     override fun createFragment(position: Int): Fragment =
         if (position == 0) {
-            ResultPageFragment("텍스트 인식 결과", originText)
+            ResultPageFragment(originText)
         } else {
-            ResultPageFragment("맞춤법 검사 결과", correctText)
+            ResultPageFragment(correctText)
         }
 
 }

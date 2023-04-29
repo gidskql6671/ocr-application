@@ -11,6 +11,7 @@ import com.example.ocr_application.ResultPageFragmentAdapter
 import com.example.ocr_application.databinding.ActivityResultBinding
 import com.example.ocr_application.dto.OcrResponse
 import com.example.ocr_application.retrofit.RetrofitClient
+import com.google.android.material.tabs.TabLayoutMediator
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -22,13 +23,10 @@ import java.io.File
 
 class ResultActivity : AppCompatActivity() {
 
-//    lateinit var correctTextView: TextView
-//    lateinit var originTextView: TextView
     lateinit var correctPercentTextView: TextView
     lateinit var pager: ViewPager2
 
     private lateinit var binding: ActivityResultBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +55,15 @@ class ResultActivity : AppCompatActivity() {
                     }
                 }
             })
+
+            TabLayoutMediator(binding.tabLayout, it) { tab, position ->
+                if (position == 0) {
+                    tab.text = "텍스트 인식 결과"
+                }
+                else {
+                    tab.text = "맞춤법 검사 결과"
+                }
+            }.attach()
         }
 
         correctPercentTextView = binding.correctPercentTextView
