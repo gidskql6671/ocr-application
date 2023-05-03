@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingVertical="20dp"
         android:text="맞춤법 검사 결과"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="여기에 맞춤법 정답률이 표시됩니다."
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -51,7 +51,8 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                app:tabTextAppearance="@style/MineCustomTabText" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/pager"

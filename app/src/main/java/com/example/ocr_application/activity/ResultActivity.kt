@@ -23,10 +23,10 @@ import java.io.File
 
 class ResultActivity : AppCompatActivity() {
 
-    lateinit var correctPercentTextView: TextView
-    lateinit var pager: ViewPager2
-
+    private lateinit var correctPercentTextView: TextView
+    private lateinit var pager: ViewPager2
     private lateinit var binding: ActivityResultBinding
+    private var imagePath: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +34,27 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        imagePath = intent.extras!!.getString("imagePath")!!
+        initPager()
+        correctPercentTextView = binding.correctPercentTextView
+
+        binding.btnPicture.setOnClickListener {
+            val popupIntent = Intent(this, ImagePopupActivity::class.java)
+            popupIntent.putExtra("imagePath", imagePath)
+            startActivity(popupIntent)
+        }
+
+//        callOcr()
+        callOcrMock()
+    }
+
+    private fun initPager() {
         pager = binding.pager.also {
             it.adapter = ResultPageFragmentAdapter(
                 this,
-                "여기에 텍스트 인식 결과가 표시됩니다.",
-                "여기에 텍스트 인식 결과의 정답이 표시됩니다."
+                originText = "여기에 텍스트 인식 결과가 표시됩니다.",
+                correctText = "여기에 텍스트 인식 결과의 정답이 표시됩니다.",
+                isLoding = true
             )
 
             it.currentItem = 0
@@ -65,31 +81,23 @@ class ResultActivity : AppCompatActivity() {
                 }
             }.attach()
         }
-
-        correctPercentTextView = binding.correctPercentTextView
-
-        binding.btnPicture.setOnClickListener {
-            val popupIntent = Intent(this, ImagePopupActivity::class.java)
-            popupIntent.putExtra("imagePath", intent.extras!!.getString("imagePath")!!)
-            startActivity(popupIntent)
-        }
-
-//        callOcr(file)
-        callOcrMock()
     }
 
     private fun callOcrMock() {
         pager.adapter = ResultPageFragmentAdapter(
             this,
-            "여기에 텍스트 인식 결과가 표시됩니다.",
-            "여기에 텍스트 인식 결과의 정답이 표시됩니다."
+            originText = "여기에 텍스트 인식 결과가 표시됩니다.",
+            correctText = "여기에 텍스트 인식 결과의 정답이 표시됩니다.",
+            isLoding = false
         )
 
         val correctPercent = 0.5 * 100
         correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
     }
 
-    private fun callOcr(file: File) {
+    private fun callOcr() {
+        val file = File(imagePath)
+
         RetrofitClient.getApiService().ocr(getMultipartData(file))
             .enqueue(object: Callback<OcrResponse> {
                 override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {

@@ -8,15 +8,16 @@ import com.example.ocr_application.fragment.ResultPageFragment
 class ResultPageFragmentAdapter(
     fa: FragmentActivity,
     private val originText: String,
-    private val correctText: String
+    private val correctText: String,
+    private val isLoding: Boolean = true
     ): FragmentStateAdapter(fa) {
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment =
         if (position == 0) {
-            ResultPageFragment(originText)
+            ResultPageFragment(originText, isLoding)
         } else {
-            ResultPageFragment(correctText)
+            ResultPageFragment(correctText, isLoding)
         }
 
 }
