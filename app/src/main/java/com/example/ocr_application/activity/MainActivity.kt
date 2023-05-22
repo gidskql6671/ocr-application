@@ -4,8 +4,10 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.ocr_application.databinding.ActivityMainBinding
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
@@ -13,6 +15,7 @@ import com.gun0912.tedpermission.normal.TedPermission
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var darkModeToggle: ImageButton
     lateinit var btnFreeMode: Button
     lateinit var btnGradeMode: Button
     private lateinit var binding: ActivityMainBinding
@@ -23,6 +26,16 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        darkModeToggle = binding.darkModeToggle.also {
+            it.setOnClickListener {
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            }
+        }
 
         //권한 체크
         TedPermission.create()
