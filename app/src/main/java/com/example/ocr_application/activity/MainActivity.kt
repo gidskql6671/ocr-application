@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
                 override fun onPermissionGranted() {
                     button = binding.btnPicture.also {
                         it.setOnClickListener {
-//                            capture()
-                            mockCapture()
+                            capture()
+//                            mockCapture()
                         }
                     }
                 }

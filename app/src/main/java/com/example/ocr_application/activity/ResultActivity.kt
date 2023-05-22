@@ -44,8 +44,8 @@ class ResultActivity : AppCompatActivity() {
             startActivity(popupIntent)
         }
 
-//        callOcr()
-        callOcrMock()
+        callOcr()
+//        callOcrMock()
     }
 
     private fun initPager() {

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 
 object RetrofitClient {
-    private const val host = "http://34.64.239.253/"
+    private const val host = "http://155.230.28.147/"
 
     fun getApiService(): RetrofitInterface = getInstance().create(RetrofitInterface::class.java)
 
