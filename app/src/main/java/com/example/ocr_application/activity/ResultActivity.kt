@@ -111,7 +111,8 @@ class ResultActivity : AppCompatActivity() {
                         pager.adapter = ResultPageFragmentAdapter(
                             this@ResultActivity,
                             it.originString,
-                            it.correctString
+                            it.correctString,
+                            isLoding = false
                         )
                         val correctPercent = it.answerPercent * 100
 

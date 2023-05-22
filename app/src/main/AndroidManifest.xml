@@ -47,6 +47,7 @@
         </activity>
 
         <activity android:name=".activity.ResultActivity" android:exported="true" />
+        <activity android:name=".activity.FreeModeActivity" android:exported="true" />
         <activity android:name=".activity.ImagePopupActivity" android:theme="@android:style/Theme.Dialog" />
 
         <provider
