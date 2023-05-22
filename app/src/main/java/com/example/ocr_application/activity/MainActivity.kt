@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
                     btnGradeMode = binding.btnGradeMode.also {
                         it.setOnClickListener {
-                            val intent = Intent(this@MainActivity, FreeModeActivity::class.java)
+                            val intent = Intent(this@MainActivity, GradeModeActivity::class.java)
                             startActivity(intent)
                         }
                     }

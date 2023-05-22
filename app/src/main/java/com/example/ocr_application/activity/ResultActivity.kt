@@ -44,8 +44,14 @@ class ResultActivity : AppCompatActivity() {
             startActivity(popupIntent)
         }
 
-        callOcr()
-//        callOcrMock()
+        val correctText = intent.extras!!.getString("correctText")
+        if (correctText == null) {
+            callOcr()
+//            callOcrMock()
+        } else{
+            callOcr(correctText)
+//            callOcrMock()
+        }
     }
 
     private fun initPager() {
@@ -127,9 +133,44 @@ class ResultActivity : AppCompatActivity() {
 
     }
 
+    private fun callOcr(correctText: String) {
+        val file = File(imagePath)
+
+        RetrofitClient.getApiService().ocrWithCorrect(getMultipartData(file), getMultipartData(correctText))
+            .enqueue(object: Callback<OcrResponse> {
+                override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {
+                    if (response.isSuccessful.not()) {
+                        return
+                    }
+
+                    response.body()?.let {
+                        Log.d("dong_request", it.toString())
+
+                        pager.adapter = ResultPageFragmentAdapter(
+                            this@ResultActivity,
+                            it.originString,
+                            it.correctString,
+                            isLoding = false
+                        )
+                        val correctPercent = it.answerPercent * 100
+
+                        correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
+                    }
+                }
+
+                override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
+                    Log.d("dong_request", t.toString())
+                }
+            })
+    }
+
     private fun getMultipartData(image: File): MultipartBody.Part {
         val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), image)
 
         return MultipartBody.Part.createFormData("image", image.name, requestFile)
+    }
+
+    private fun getMultipartData(correctText: String): MultipartBody.Part {
+        return MultipartBody.Part.createFormData("correctText", correctText)
     }
 }

@@ -3,4 +3,12 @@
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="Button.Default" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:radius">10dp</item>
+    </style>
 </resources>

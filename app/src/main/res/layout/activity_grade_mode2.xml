@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FreeModeActivity">
+    tools:context=".activity.GradeMode2Activity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/free_mode_title"
+        android:text="@string/grade_mode_title"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -28,27 +28,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:paddingHorizontal="5dp"
-        android:text="@string/free_mode_content"
+        android:text="@string/grade_mode2_content"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <Button
-        android:id="@+id/btn_picture"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="15dp"
-        android:text="사진 찍기"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <GridLayout
+        android:id="@+id/btn_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="80dp"
+        android:columnCount="3"
+        android:paddingHorizontal="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintTop_toBottomOf="@+id/content">
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,12 @@ interface RetrofitInterface {
     @Multipart
     @POST("/ocr")
     fun ocr(@Part image: MultipartBody.Part): Call<OcrResponse>
+
+    @Multipart
+    @POST("/ocr")
+    fun ocrWithCorrect(@Part image: MultipartBody.Part, @Part correctText: MultipartBody.Part): Call<OcrResponse>
+
+
+    @GET("/problem")
+    fun problem(@Query("studentGrade") studentGrade: Int, @Query("problemGrade") problemGrade: Int): Call<String>
 }

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FreeModeActivity">
+    tools:context=".activity.GradeMode3Activity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/free_mode_title"
+        android:text="@string/grade_mode_title"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -28,12 +28,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:paddingHorizontal="5dp"
-        android:text="@string/free_mode_content"
+        android:text="@string/grade_mode3_content"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <TextView
+        android:id="@+id/correct_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="5dp"
+        android:text="@string/grade_mode3_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
     <Button
         android:id="@+id/btn_picture"

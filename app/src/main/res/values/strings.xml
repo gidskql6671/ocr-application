@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">한글 맞춤법 검사기</string>
-    <string name="free_mode_content">원하시는 문장을 마음껏 입력하세요.</string>
     <string name="free_mode_title">자유 모드</string>
+    <string name="free_mode_content">원하시는 문장을 마음껏 입력하세요.</string>
     <string name="grade_mode_title">급수 평가</string>
+    <string name="grade_mode1_content">학년을 선택해 주세요.</string>
+    <string name="grade_mode2_content">급수를 선택해 주세요.</string>
+    <string name="grade_mode3_content">다음 문장을 적어주세요.</string>
 </resources>
