@@ -2,4 +2,5 @@
 <resources>
     <color name="textColor">@color/white</color>
     <color name="darkModeToggle">@color/white</color>
+    <color name="backBtn">@color/white</color>
 </resources>

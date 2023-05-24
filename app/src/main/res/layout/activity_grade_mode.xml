@@ -37,14 +37,9 @@
 
     <Button
         android:id="@+id/btn_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="15dp"
         android:text="1학년"
-        android:textSize="20sp"
         android:textStyle="bold"
+        style="@style/Button.Default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_2"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,14 +48,9 @@
 
     <Button
         android:id="@+id/btn_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="15dp"
         android:text="2학년"
-        android:textSize="20sp"
         android:textStyle="bold"
+        style="@style/Button.Default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_1"

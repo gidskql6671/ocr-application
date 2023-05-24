@@ -1,6 +1,5 @@
 package com.example.ocr_application.activity
 
-import android.app.ActionBar.LayoutParams
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Typeface
@@ -42,15 +41,14 @@ class GradeMode2Activity : AppCompatActivity() {
 
         btnGrid = binding.btnGrid
         for (i: Int in 1..10 step(2)) {
-            Button(ContextThemeWrapper(this, R.style.Button_Default)).let {
+            Button(ContextThemeWrapper(this, R.style.Button_Default), null, 0).let {
                 it.text = "${i}급수"
                 it.typeface = Typeface.DEFAULT_BOLD
 
-                it.setPadding(30.dp, 20.dp, 30.dp, 20.dp)
+                it.setPadding(0.dp, 12.dp, 0.dp, 12.dp)
 
                 it.layoutParams = GridLayout.LayoutParams()
-                it.layoutParams.width = 120.dp
-                it.layoutParams.height = LayoutParams.WRAP_CONTENT
+                it.layoutParams.width = 130.dp
 
                 it.setOnClickListener {
                     val intent = Intent(this, GradeMode3Activity::class.java)
@@ -73,15 +71,14 @@ class GradeMode2Activity : AppCompatActivity() {
                 btnGrid.addView(it)
             }
 
-            Button(ContextThemeWrapper(this, R.style.Button_Default)).let {
+            Button(ContextThemeWrapper(this, R.style.Button_Default), null, 0).let {
                 it.text = "${i + 1}급수"
                 it.typeface = Typeface.DEFAULT_BOLD
 
-                it.setPadding(30.dp, 20.dp, 30.dp, 20.dp)
+                it.setPadding(0.dp, 12.dp, 0.dp, 12.dp)
 
                 it.layoutParams = GridLayout.LayoutParams()
-                it.layoutParams.width = 120.dp
-                it.layoutParams.height = LayoutParams.WRAP_CONTENT
+                it.layoutParams.width = 130.dp
 
                 it.setOnClickListener {
                     val intent = Intent(this, GradeMode3Activity::class.java)
@@ -94,6 +91,19 @@ class GradeMode2Activity : AppCompatActivity() {
 
                 btnGrid.addView(it)
             }
+
+            btnGrid.addView(Space(this))
+            Space(this).let {
+                it.layoutParams = GridLayout.LayoutParams(
+                    GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL, 1f),
+                    GridLayout.spec(GridLayout.UNDEFINED,GridLayout.FILL,1f)
+                ).apply {
+                    height = 15.dp
+                }
+
+                btnGrid.addView(it)
+            }
+            btnGrid.addView(Space(this))
         }
     }
 }
