@@ -22,88 +22,123 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleBar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_picture">
-
-        <TextView
-            android:id="@+id/correctPercentTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="여기에 맞춤법 정답률이 표시됩니다."
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/correctTextLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="정답 문장"
-            android:textColor="@color/textColor"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:background="@drawable/border_box"
-            android:layout_marginBottom="8dp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-            <TextView
-                android:id="@+id/correctText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="여기에 정답이 표시됩니다."
-                android:textColor="@color/textColor"
-                android:textSize="18sp" />
-        </ScrollView>
-
-        <TextView
-            android:id="@+id/originTextLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="인식된 문장"
-            android:textColor="@color/textColor"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:background="@drawable/border_box"
-            android:layout_marginBottom="8dp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-            <TextView
-                android:id="@+id/originText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="여기에 인식된 문장이 표시됩니다."
-                android:textColor="@color/textColor"
-                android:textSize="18sp" />
-        </ScrollView>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
-        android:paddingHorizontal="25dp"
-        android:paddingVertical="15dp"
-        android:text="사진 확인"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/correctPercentTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="여기에 맞춤법 정답률이 표시됩니다."
+                    android:textColor="@color/textColor"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/correctTextLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/border_box"
+                    android:gravity="center"
+                    android:text="정답 문장"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <TextView
+                        android:id="@+id/correctText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="여기에 정답이 표시됩니다."
+                        android:textColor="@color/textColor"
+                        android:textSize="18sp" />
+                </ScrollView>
+
+                <TextView
+                    android:id="@+id/originTextLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/border_box"
+                    android:gravity="center"
+                    android:text="인식된 문장"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <TextView
+                        android:id="@+id/originText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="여기에 인식된 문장이 표시됩니다."
+                        android:textColor="@color/textColor"
+                        android:textSize="18sp" />
+                </ScrollView>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="15dp"
+                android:text="사진 확인"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/loading_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#30000000">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Large.Circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/primary" />
+        </FrameLayout>
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
