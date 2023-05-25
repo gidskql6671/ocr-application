@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".activity.FreeModeActivity">
 
+    <LinearLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ff7a00"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:src="@drawable/round_arrow_back_24" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"

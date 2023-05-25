@@ -43,6 +43,8 @@ class ResultActivity : AppCompatActivity() {
         imagePath = intent.extras!!.getString("imagePath")!!
         val correctText = intent.extras!!.getString("correctText")
 
+        binding.btnBack.setOnClickListener { finish() }
+
         binding.btnPicture.setOnClickListener {
             val popupIntent = Intent(this, ImagePopupActivity::class.java)
             popupIntent.putExtra("imagePath", imagePath)

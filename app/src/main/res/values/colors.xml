@@ -10,5 +10,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textColor">@color/black</color>
     <color name="darkModeToggle">@color/black</color>
-    <color name="backBtn">@color/black</color>
+    <color name="backBtn">@color/white</color>
 </resources>

@@ -41,6 +41,8 @@ class GradeMode3Activity : AppCompatActivity() {
 
         ttsBtn = binding.ttsBtn
 
+        binding.btnBack.setOnClickListener { finish() }
+
         tts = TextToSpeech(this) {
             if(it != ERROR) {
                 tts.language = Locale.KOREAN

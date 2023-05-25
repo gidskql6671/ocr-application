@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.ocr_application.databinding.ActivityFreeModeBinding
@@ -17,8 +16,6 @@ import java.util.*
 
 class FreeModeActivity : AppCompatActivity() {
 
-    lateinit var button: Button
-
     private var currentPhotoPath: String = ""
     private lateinit var binding: ActivityFreeModeBinding
     private val request_image_code = 101
@@ -30,11 +27,11 @@ class FreeModeActivity : AppCompatActivity() {
         binding = ActivityFreeModeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        button = binding.btnPicture.also {
-            it.setOnClickListener {
-                capture()
-//                mockCapture()
-            }
+        binding.btnBack.setOnClickListener { finish() }
+
+        binding.btnPicture.setOnClickListener {
+            capture()
+//            mockCapture()
         }
 
     }

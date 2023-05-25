@@ -37,6 +37,8 @@ class GradeMode2Activity : AppCompatActivity() {
         binding = ActivityGradeMode2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener { finish() }
+
         val studentGrade = intent.extras!!.getInt("grade")
 
         btnGrid = binding.btnGrid

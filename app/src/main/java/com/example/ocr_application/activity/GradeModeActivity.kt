@@ -20,6 +20,8 @@ class GradeModeActivity : AppCompatActivity() {
         binding = ActivityGradeModeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener { finish() }
+
         binding.btn1.setOnClickListener {
             val intent = Intent(this, GradeMode2Activity::class.java)
             intent.putExtra("grade", 1)
