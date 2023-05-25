@@ -5,5 +5,5 @@
     <string name="grade_mode_title">급수 평가</string>
     <string name="grade_mode1_content">학년을 선택해 주세요.</string>
     <string name="grade_mode2_content">급수를 선택해 주세요.</string>
-    <string name="grade_mode3_content">다음 문장을 적어주세요.</string>
+    <string name="grade_mode3_content">불러주는 문장을 적어주세요.</string>
 </resources>

@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.speech.tts.TextToSpeech
+import android.speech.tts.TextToSpeech.ERROR
 import android.util.Log
-import android.widget.TextView
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.ocr_application.databinding.ActivityGradeMode3Binding
@@ -22,8 +24,9 @@ import java.util.*
 
 class GradeMode3Activity : AppCompatActivity() {
 
-    lateinit var correctTextView: TextView
+    lateinit var ttsBtn: ImageButton
 
+    private lateinit var tts: TextToSpeech
     private var currentPhotoPath: String = ""
     private lateinit var binding: ActivityGradeMode3Binding
     private val request_image_code = 101
@@ -36,7 +39,13 @@ class GradeMode3Activity : AppCompatActivity() {
         binding = ActivityGradeMode3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        correctTextView = binding.correctTextView
+        ttsBtn = binding.ttsBtn
+
+        tts = TextToSpeech(this) {
+            if(it != ERROR) {
+                tts.language = Locale.KOREAN
+            }
+        }
 
         getProblem(
             intent.extras!!.getInt("studentGrade"),
@@ -57,10 +66,14 @@ class GradeMode3Activity : AppCompatActivity() {
                         Log.d("dong_request", it)
 
                         correctText = it
-                        correctTextView.text = it
 
                         binding.btnPicture.setOnClickListener {
-                            capture()
+//                            capture()
+                            captureMock()
+                        }
+
+                        ttsBtn.setOnClickListener {
+                            tts.speak(correctText, TextToSpeech.QUEUE_FLUSH, null, null)
                         }
                     }
                 }
@@ -72,7 +85,7 @@ class GradeMode3Activity : AppCompatActivity() {
 
     }
 
-    private fun mockCapture() {
+    private fun captureMock() {
         try {
             val inputStream = assets.open("sample.jpeg")
             val photoFile: File = File.createTempFile("sample", ".jpg", cacheDir)
