@@ -5,13 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.ocr_application.ResultPageFragmentAdapter
 import com.example.ocr_application.databinding.ActivityResultBinding
 import com.example.ocr_application.dto.OcrResponse
 import com.example.ocr_application.retrofit.RetrofitClient
-import com.google.android.material.tabs.TabLayoutMediator
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -24,7 +20,9 @@ import java.io.File
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var correctPercentTextView: TextView
-    private lateinit var pager: ViewPager2
+    private lateinit var originTextView: TextView
+    private lateinit var correctTextView: TextView
+
     private lateinit var binding: ActivityResultBinding
     private var imagePath: String = ""
 
@@ -34,9 +32,12 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        imagePath = intent.extras!!.getString("imagePath")!!
-        initPager()
         correctPercentTextView = binding.correctPercentTextView
+        originTextView = binding.originText
+        correctTextView = binding.correctText
+
+        imagePath = intent.extras!!.getString("imagePath")!!
+        val correctText = intent.extras!!.getString("correctText")
 
         binding.btnPicture.setOnClickListener {
             val popupIntent = Intent(this, ImagePopupActivity::class.java)
@@ -44,59 +45,16 @@ class ResultActivity : AppCompatActivity() {
             startActivity(popupIntent)
         }
 
-        val correctText = intent.extras!!.getString("correctText")
         if (correctText == null) {
             callOcr()
-//            callOcrMock()
         } else{
             callOcr(correctText)
-//            callOcrMock()
         }
-    }
 
-    private fun initPager() {
-        pager = binding.pager.also {
-            it.adapter = ResultPageFragmentAdapter(
-                this,
-                originText = "여기에 텍스트 인식 결과가 표시됩니다.",
-                correctText = "여기에 텍스트 인식 결과의 정답이 표시됩니다.",
-                isLoding = true
-            )
-
-            it.currentItem = 0
-            it.offscreenPageLimit = 2
-            it.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    if (positionOffsetPixels == 0) {
-                        it.currentItem = position
-                    }
-                }
-            })
-
-            TabLayoutMediator(binding.tabLayout, it) { tab, position ->
-                if (position == 0) {
-                    tab.text = "텍스트 인식 결과"
-                }
-                else {
-                    tab.text = "맞춤법 검사 결과"
-                }
-            }.attach()
-        }
+//        callOcrMock()
     }
 
     private fun callOcrMock() {
-        pager.adapter = ResultPageFragmentAdapter(
-            this,
-            originText = "여기에 텍스트 인식 결과가 표시됩니다.",
-            correctText = "여기에 텍스트 인식 결과의 정답이 표시됩니다.",
-            isLoding = false
-        )
-
         val correctPercent = 0.5 * 100
         correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
     }
@@ -108,26 +66,28 @@ class ResultActivity : AppCompatActivity() {
             .enqueue(object: Callback<OcrResponse> {
                 override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {
                     if (response.isSuccessful.not()) {
+                        originTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+                        correctTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+
                         return
                     }
 
                     response.body()?.let {
                         Log.d("dong_request", it.toString())
 
-                        pager.adapter = ResultPageFragmentAdapter(
-                            this@ResultActivity,
-                            it.originString,
-                            it.correctString,
-                            isLoding = false
-                        )
                         val correctPercent = it.answerPercent * 100
 
                         correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
+                        originTextView.text = it.originString
+                        correctTextView.text = it.correctString
                     }
                 }
 
                 override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
-                    Log.d("dong_request", t.toString())
+                    originTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+                    correctTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+
+                    Log.e("dong_request", t.toString())
                 }
             })
 
@@ -135,31 +95,31 @@ class ResultActivity : AppCompatActivity() {
 
     private fun callOcr(correctText: String) {
         val file = File(imagePath)
+        correctTextView.text = correctText
 
         RetrofitClient.getApiService().ocrWithCorrect(getMultipartData(file), getMultipartData(correctText))
             .enqueue(object: Callback<OcrResponse> {
                 override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {
                     if (response.isSuccessful.not()) {
+                        originTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+
                         return
                     }
 
                     response.body()?.let {
                         Log.d("dong_request", it.toString())
 
-                        pager.adapter = ResultPageFragmentAdapter(
-                            this@ResultActivity,
-                            it.originString,
-                            it.correctString,
-                            isLoding = false
-                        )
                         val correctPercent = it.answerPercent * 100
 
                         correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
+                        originTextView.text = it.originString
                     }
                 }
 
                 override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
-                    Log.d("dong_request", t.toString())
+                    originTextView.text = "문장을 인식하는데 실패했습니다. 다시 시도해주세요."
+
+                    Log.e("dong_request", t.toString())
                 }
             })
     }

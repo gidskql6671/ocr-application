@@ -38,27 +38,58 @@
             android:layout_height="wrap_content"
             android:text="여기에 맞춤법 정답률이 표시됩니다."
             android:textColor="@color/textColor"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"/>
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <TextView
+            android:id="@+id/correctTextLabel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp" >
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="정답 문장"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@drawable/border_box"
+            android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            <TextView
+                android:id="@+id/correctText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:tabTextAppearance="@style/MineCustomTabText" />
+                android:layout_height="match_parent"
+                android:text="여기에 정답이 표시됩니다."
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </ScrollView>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/pager"
+        <TextView
+            android:id="@+id/originTextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="인식된 문장"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@drawable/border_box"
+            android:layout_marginBottom="8dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            <TextView
+                android:id="@+id/originText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:text="여기에 인식된 문장이 표시됩니다."
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </ScrollView>
     </LinearLayout>
 
     <Button
