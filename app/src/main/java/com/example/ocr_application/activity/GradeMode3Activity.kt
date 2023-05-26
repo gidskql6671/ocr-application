@@ -70,8 +70,8 @@ class GradeMode3Activity : AppCompatActivity() {
                         correctText = it
 
                         binding.btnPicture.setOnClickListener {
-//                            capture()
-                            captureMock()
+                            capture()
+//                            captureMock()
                         }
 
                         ttsBtn.setOnClickListener {

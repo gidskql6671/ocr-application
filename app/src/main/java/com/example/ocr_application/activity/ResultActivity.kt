@@ -61,8 +61,11 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun callOcrMock() {
-        val correctPercent = 0.5 * 100
+        val correctPercent = 0.875 * 100
+        originTextView.text = "나뭇입이 살랑살랑"
+        correctTextView.text = "나뭇잎이 살랑살랑"
         correctPercentTextView.text = String.format("맞춤법 정답률은 %.2f%%입니다.", correctPercent)
+        loadingFrame.visibility = View.GONE
     }
 
     private fun callOcr() {
