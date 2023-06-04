@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.GradeMode3Activity">
+    tools:context="com.gidskql6671.ocr_application.activity.GradeMode3Activity">
 
     <LinearLayout
         android:id="@+id/titleBar"

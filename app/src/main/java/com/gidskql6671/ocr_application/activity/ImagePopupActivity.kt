@@ -1,4 +1,4 @@
-package com.example.ocr_application.activity
+package com.gidskql6671.ocr_application.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.ImageView
-import com.example.ocr_application.databinding.ActivityImagePopupBinding
+import com.gidskql6671.ocr_application.databinding.ActivityImagePopupBinding
 import java.io.File
 import java.io.FileInputStream
 

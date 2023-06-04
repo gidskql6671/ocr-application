@@ -37,7 +37,7 @@
         tools:targetApi="31"
         android:networkSecurityConfig="@xml/network_security_config">
 
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="com.gidskql6671.ocr_application.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,16 +46,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ResultActivity" android:exported="true" />
-        <activity android:name=".activity.FreeModeActivity" android:exported="true" />
-        <activity android:name=".activity.GradeModeActivity" android:exported="true" />
-        <activity android:name=".activity.GradeMode2Activity" android:exported="true" />
-        <activity android:name=".activity.GradeMode3Activity" android:exported="true" />
-        <activity android:name=".activity.ImagePopupActivity" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.ResultActivity" android:exported="true" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.FreeModeActivity" android:exported="true" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.GradeModeActivity" android:exported="true" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.GradeMode2Activity" android:exported="true" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.GradeMode3Activity" android:exported="true" />
+        <activity android:name="com.gidskql6671.ocr_application.activity.ImagePopupActivity" android:theme="@android:style/Theme.Dialog" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.ocr_application.provider"
+            android:authorities="com.gidskql6671.ocr_application.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

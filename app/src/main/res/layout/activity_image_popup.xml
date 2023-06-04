@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:orientation="vertical"
-    tools:context=".activity.ImagePopupActivity">
+    tools:context="com.gidskql6671.ocr_application.activity.ImagePopupActivity">
 
     <LinearLayout
         android:orientation="horizontal"

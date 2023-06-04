@@ -1,4 +1,4 @@
-package com.example.ocr_application.retrofit
+package com.gidskql6671.ocr_application.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

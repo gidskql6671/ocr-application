@@ -1,10 +1,10 @@
-package com.example.ocr_application.activity
+package com.gidskql6671.ocr_application.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ocr_application.databinding.ActivityGradeModeBinding
+import com.gidskql6671.ocr_application.databinding.ActivityGradeModeBinding
 
 
 class GradeModeActivity : AppCompatActivity() {

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.ocr_application'
+    namespace 'com.gidskql6671.ocr_application'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.ocr_application"
+        applicationId "com.gidskql6671.ocr_application"
         minSdk 24
         targetSdk 33
         versionCode 1

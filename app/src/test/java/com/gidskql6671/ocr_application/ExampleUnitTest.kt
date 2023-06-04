@@ -1,4 +1,4 @@
-package com.example.ocr_application
+package com.gidskql6671.ocr_application
 
 import org.junit.Test
 

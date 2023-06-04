@@ -1,4 +1,4 @@
-package com.example.ocr_application.activity
+package com.gidskql6671.ocr_application.activity
 
 import android.content.Intent
 import android.content.res.Resources
@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.GridLayout
 import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ocr_application.R
-import com.example.ocr_application.databinding.ActivityGradeMode2Binding
+import com.gidskql6671.ocr_application.R
+import com.gidskql6671.ocr_application.databinding.ActivityGradeMode2Binding
 
 
 class GradeMode2Activity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.ocr_application.activity
+package com.gidskql6671.ocr_application.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ocr_application.databinding.ActivityResultBinding
-import com.example.ocr_application.dto.OcrResponse
-import com.example.ocr_application.retrofit.RetrofitClient
+import com.gidskql6671.ocr_application.databinding.ActivityResultBinding
+import com.gidskql6671.ocr_application.dto.OcrResponse
+import com.gidskql6671.ocr_application.retrofit.RetrofitClient
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

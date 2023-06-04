@@ -1,4 +1,4 @@
-package com.example.ocr_application.activity
+package com.gidskql6671.ocr_application.activity
 
 import android.Manifest
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.ocr_application.databinding.ActivityMainBinding
+import com.gidskql6671.ocr_application.databinding.ActivityMainBinding
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 

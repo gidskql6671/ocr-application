@@ -1,4 +1,4 @@
-package com.example.ocr_application.dto
+package com.gidskql6671.ocr_application.dto
 
 import com.google.gson.annotations.SerializedName
 

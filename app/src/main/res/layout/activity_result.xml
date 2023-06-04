@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ResultActivity">
+    tools:context="com.gidskql6671.ocr_application.activity.ResultActivity">
 
     <LinearLayout
         android:id="@+id/titleBar"
